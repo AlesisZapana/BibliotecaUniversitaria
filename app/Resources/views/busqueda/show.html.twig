@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Busqueda</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ busqueda.id }}</td>
+            </tr>
+            <tr>
+                <th>Buscar</th>
+                <td>{{ busqueda.buscar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('busqueda_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

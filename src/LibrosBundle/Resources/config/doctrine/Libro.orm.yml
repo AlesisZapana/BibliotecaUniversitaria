@@ -1,0 +1,61 @@
+LibrosBundle\Entity\Libro:
+    type: entity
+    table: libros
+    repositoryClass: LibrosBundle\Repository\LibroRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: 255
+        isbn:
+            type: bigint
+            unique: true
+        cantpaginas:
+            type: integer
+        portada:
+            type: string
+            length: 255
+        numEdicion:
+            type: integer
+        editorial:
+            type: string
+            length: 255
+        descripcion:
+            type: text
+        anioEdicion:
+            type: integer
+        fechaCarga:
+            type: datetime
+        resumen:
+            type: string
+            length: 255
+        anioPublicacion:
+            type: integer
+            
+    manyToOne:
+        idioma:
+            targetEntity: Idioma
+            inversedBy: libros
+            joinColumn:
+                name: idioma_id
+                referencedColumnName: id
+
+    manyToMany:
+        categoria:
+            targetEntity: Categoria
+            inversedBy: libros
+            joinColumn:
+                name: categoria_id
+                referencedColumnName: id
+        autor:
+            targetEntity: Autor
+            inversedBy: libros
+            joinColumn:
+                name: autor_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

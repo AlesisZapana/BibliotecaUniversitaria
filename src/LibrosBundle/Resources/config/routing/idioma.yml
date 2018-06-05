@@ -1,0 +1,24 @@
+idioma_index:
+    path:     /
+    defaults: { _controller: "LibrosBundle:Idioma:index" }
+    methods:  GET
+
+idioma_show:
+    path:     /{id}/show
+    defaults: { _controller: "LibrosBundle:Idioma:show" }
+    methods:  GET
+
+idioma_new:
+    path:     /new
+    defaults: { _controller: "LibrosBundle:Idioma:new" }
+    methods:  [GET, POST]
+
+idioma_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LibrosBundle:Idioma:edit" }
+    methods:  [GET, POST]
+
+idioma_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LibrosBundle:Idioma:delete" }
+    methods:  DELETE

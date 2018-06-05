@@ -1,0 +1,28 @@
+libros_categoria:
+    resource: "@LibrosBundle/Resources/config/routing/categoria.yml"
+    prefix:   /admin/categoria
+
+libros_homepage:
+    path:     /libros
+    defaults: { _controller: LibrosBundle:Default:index }
+
+libros_idioma:
+    resource: "@LibrosBundle/Resources/config/routing/idioma.yml"
+    prefix:   /admin/idioma
+
+libros_libro:
+    resource: "@LibrosBundle/Resources/config/routing/libro.yml"
+    # prefix:   /libro
+
+libros_autor:
+    resource: "@LibrosBundle/Resources/config/routing/autor.yml"
+    # prefix:   /autor
+
+libros_busqueda:
+    path:     /buscar/{libro}
+    defaults: { _controller: LibrosBundle:Default:busqueda }
+
+libros_busqueda_json:
+    path: /api/search/{libro}
+    defaults: { _controller: LibrosBundle:Api:busqueda }
+    methods: GET

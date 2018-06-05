@@ -1,0 +1,16 @@
+LibrosBundle\Entity\Categoria:
+    type: entity
+    table: categorias
+    repositoryClass: LibrosBundle\Repository\CategoriaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '100'
+            unique: true
+    lifecycleCallbacks: {  }

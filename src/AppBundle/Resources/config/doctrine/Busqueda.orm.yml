@@ -1,0 +1,15 @@
+AppBundle\Entity\Busqueda:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BusquedaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        buscar:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -1,0 +1,24 @@
+autor_index:
+    path:     /admin/autor/
+    defaults: { _controller: "LibrosBundle:Autor:index" }
+    methods:  GET
+
+autor_show:
+    path:     /{id}/show
+    defaults: { _controller: "LibrosBundle:Autor:show" }
+    methods:  GET
+
+autor_new:
+    path:     /admin/autor/new
+    defaults: { _controller: "LibrosBundle:Autor:new" }
+    methods:  [GET, POST]
+
+autor_edit:
+    path:     /admin/autor/{id}/edit
+    defaults: { _controller: "LibrosBundle:Autor:edit" }
+    methods:  [GET, POST]
+
+autor_delete:
+    path:     /admin/autor/{id}/delete
+    defaults: { _controller: "LibrosBundle:Autor:delete" }
+    methods:  DELETE

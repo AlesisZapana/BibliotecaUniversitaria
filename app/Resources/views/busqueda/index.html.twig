@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Busquedas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Buscar</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for busqueda in busquedas %}
+            <tr>
+                <td><a href="{{ path('busqueda_show', { 'id': busqueda.id }) }}">{{ busqueda.id }}</a></td>
+                <td>{{ busqueda.buscar }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('busqueda_show', { 'id': busqueda.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

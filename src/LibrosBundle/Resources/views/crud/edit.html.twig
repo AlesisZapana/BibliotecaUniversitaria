@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Editar {{entidadNombre}} </h1>
+    <div class="container">
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <button type="submit" class="btn btn-secondary" value="Edit" >Editar</button>
+        {{ form_end(edit_form) }}
+    </div>
+    <table style="height: 100px;">
+        <tbody>
+    <tr>
+    <td>  {{ form_start(delete_form) }}
+        <button type="submit" class="btn btn-danger" value="Delete">Eliminar</button>
+    {{ form_end(delete_form) }}
+    </td>
+
+    <td><a class="btn btn-primary" href="{{ path(rutaIndex) }}">Listado de {{listaNombre}} </a>
+    </td>
+    </tr>
+    </tbody>
+    </table> 
+            
+    
+{% endblock %}

@@ -1,0 +1,3 @@
+app_busqueda:
+    resource: "@AppBundle/Resources/config/routing/busqueda.yml"
+    prefix:   /busqueda

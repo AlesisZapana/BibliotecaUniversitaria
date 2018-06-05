@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block after_css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <h1>Agregar {{entidadNombre}} </h1>
+    <div class="container">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Create" />
+        {{ form_end(form) }}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path(rutaIndex) }}">Listado de {{listaEntidad}} </a>
+        </li>
+    </ul>
+    
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(".tags").select2({
+          tags: true
+        });        
+    </script>
+{% endblock %}

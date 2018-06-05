@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {# <h1>{{entidadNombre}} </h1> #}
+
+    {# <table class="table">
+        <tbody>
+            {% for atributo in atributos %}
+                {% set campo = attribute(elemento,atributo) %}
+                <tr>
+                    <th> {{columnas[loop.index0]}} </th>
+                    {% if campo.timestamp is defined %}
+                        <td> {{campo|date("d/M/Y")}} </td>
+                    {% else %}
+                        <td>{{campo}}</td>
+                    {% endif %} 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table> #}
+
+    <div class="card">
+      {# <div class="card-header">
+        Featured
+      </div> #}
+      <div class="card-body">
+        <h5 class="card-title">{{entidadNombre}}</h5>
+       {#  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> #}
+                
+            <ul class="list-group list-group-flush">
+            {% for atributo in atributos %}
+                {% set campo = attribute(elemento,atributo) %}
+                    <li class="list-group-item"><b> {{columnas[loop.index0]}}</b>: 
+                    {% if campo.timestamp is defined %}
+                        {{campo|date("d/M/Y")}} </li>
+                    {% else %}
+                        {{campo}}</li>
+                    {% endif %} 
+            {% endfor %}
+            </ul>
+
+        {% if app.user %}
+        <a href="{{path(rutaEdit, { 'id': elemento.id })}}" class="btn btn-secondary">Editar</a>
+        <a href="{{path(rutaIndex)}}" class="btn btn-primary">Listado de {{listaNombre}}</a>
+        {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-danger" value="Delete">Delete</button>
+        {{ form_end(delete_form) }}        
+        {% endif %}
+      </div>
+    </div>    
+
+    {# <div class="card mb-3">
+  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div> #}
+
+{% endblock %}

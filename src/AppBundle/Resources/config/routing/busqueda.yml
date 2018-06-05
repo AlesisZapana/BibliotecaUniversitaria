@@ -1,0 +1,12 @@
+busqueda_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Busqueda:index" }
+    methods:  GET
+
+busqueda_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Busqueda:show" }
+    methods:  GET
+
+
+

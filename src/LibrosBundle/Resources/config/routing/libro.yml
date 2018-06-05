@@ -1,0 +1,24 @@
+libro_index:
+    path:     /admin/libro/
+    defaults: { _controller: "LibrosBundle:Libro:index" }
+    methods:  GET
+
+libro_show:
+    path:     /{id}/show
+    defaults: { _controller: "LibrosBundle:Libro:show" }
+    methods:  GET
+
+libro_new:
+    path:     /admin/libro/new
+    defaults: { _controller: "LibrosBundle:Libro:new" }
+    methods:  [GET, POST]
+
+libro_edit:
+    path:     /admin/libro/{id}/edit
+    defaults: { _controller: "LibrosBundle:Libro:edit" }
+    methods:  [GET, POST]
+
+libro_delete:
+    path:     /admin/libro/{id}/delete
+    defaults: { _controller: "LibrosBundle:Libro:delete" }
+    methods:  DELETE

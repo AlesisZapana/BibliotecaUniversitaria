@@ -1,0 +1,26 @@
+LibrosBundle\Entity\Autor:
+    type: entity
+    table: autores
+    repositoryClass: LibrosBundle\Repository\AutorRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '30'
+        apellido:
+            type: string
+            length: '30'
+        biografia:
+            type: text
+        web:
+            type: text
+        foto:
+            type: text
+            nullable: true
+
+    lifecycleCallbacks: {  }

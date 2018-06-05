@@ -1,0 +1,9 @@
+AppBundle\Entity\User:
+    type:  entity
+    table: usuarios
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
