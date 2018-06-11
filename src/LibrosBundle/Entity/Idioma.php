@@ -1,18 +1,22 @@
 <?php
 
 namespace LibrosBundle\Entity;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Idioma
+ * @JMS\ExclusionPolicy("all")
  */
 class Idioma {
 	/**
 	 * @var int
+	 * @JMS\Expose
 	 */
 	private $id;
 
 	/**
 	 * @var string
+	 * @JMS\Expose
 	 */
 	private $nombre;
 

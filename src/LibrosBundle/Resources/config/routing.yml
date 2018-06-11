@@ -26,3 +26,8 @@ libros_busqueda_json:
     path: /api/search/{libro}
     defaults: { _controller: LibrosBundle:Api:busqueda }
     methods: GET
+
+libro_ficha_json:
+    path: /api/ficha/{libro}
+    defaults: { _controller: LibrosBundle:Api:ficha }
+    methods: GET

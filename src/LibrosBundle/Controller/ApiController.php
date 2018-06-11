@@ -21,18 +21,29 @@ class ApiController extends Controller {
 		$libros = $em->getRepository('LibrosBundle:Libro')->buscar($libro);
 
 		$data = $this->get('jms_serializer')->serialize($libros, 'json');
-		//return new JsonResponse(json_decode($data), Response::HTTP_ACCEPTED);
-		// $librosPrueba = json_decode(json_encode($data), true);
-		// $librosJson = new JsonResponse(json_decode($data), Response::HTTP_ACCEPTED);
+
+		$response = new JsonResponse(json_decode($data));
+
+		$response->headers->remove('Connection', 'close');
+		$response->headers->set('Connection', 'Keep-alive');
+
+		return $response;
+		return $this->render('default/api_busqueda.html.twig', [
+			'data' => $data,
+		]);
+	}
+
+	public function fichaAction($libro) {
+		$em = $this->getDoctrine()->getManager();
+		$unLibro = $em->getRepository('LibrosBundle:Libro')->findById($libro);
+		$data = $this->get('jms_serializer')->serialize($unLibro, 'json');
 		$response = new JsonResponse(json_decode($data));
 		$response->headers->remove('Connection', 'close');
 		$response->headers->set('Connection', 'Keep-alive');
 		return $response;
-		return $this->render('default/api_busqueda.html.twig', [
+
+		return $this->render('default/api_ficha.html.twig', [
 			'data' => $data,
-			// 'librosJson' => $librosJson,
-			// 'libros' => $libros,
-			// 'librosPrueba' => $librosPrueba,
 		]);
 	}
 }
