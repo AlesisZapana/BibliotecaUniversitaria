@@ -12,18 +12,18 @@ libros_idioma:
 
 libros_libro:
     resource: "@LibrosBundle/Resources/config/routing/libro.yml"
-    # prefix:   /libro
+    prefix:   /libro
 
 libros_autor:
     resource: "@LibrosBundle/Resources/config/routing/autor.yml"
-    # prefix:   /autor
+    prefix:   /autor
 
 libros_busqueda:
     path:     /buscar/{libro}
-    defaults: { _controller: LibrosBundle:Default:busqueda }
-
+    defaults: { _controller: LibrosBundle:Default:busquedaTitulo }
+    
 libros_busqueda_json:
-    path: /api/search/{libro}
+    path: /api/search
     defaults: { _controller: LibrosBundle:Api:busqueda }
     methods: GET
 

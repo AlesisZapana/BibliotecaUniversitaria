@@ -159,4 +159,8 @@ class Autor {
 		return $this->apellido . ' ' . $this->nombre;
 	}
 
+	public function __toString() {
+		return $this->apellido . ' ' . $this->nombre;
+	}
+
 }

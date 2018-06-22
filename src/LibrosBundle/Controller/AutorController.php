@@ -74,7 +74,7 @@ class AutorController extends Controller {
 		$columnas = ['Nombre', 'Apellido', 'Biografia', 'Web', 'Foto'];
 		$deleteForm = $this->createDeleteForm($autor);
 
-		return $this->render('@Libros/crud/show.html.twig', array(
+		return $this->render('@Libros/crud/autor.html.twig', array(
 			'elemento' => $autor,
 			'delete_form' => $deleteForm->createView(),
 			'atributos' => $columnas,

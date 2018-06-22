@@ -9,14 +9,39 @@ namespace LibrosBundle\Repository;
  * repository methods below.
  */
 class LibroRepository extends \Doctrine\ORM\EntityRepository {
-	public function buscar($tituloLibro) {
+	public function buscar($criterios) {
 
 		$em = $this->getEntityManager();
-		$query = $this->createQueryBuilder("libros")
-			->where("libros.titulo like :tituloLibro")
-			->setParameter("tituloLibro", "%$tituloLibro%")
-			->getQuery();
-		$libros = $query->getResult();
-		return $libros;
+		$query = $this->createQueryBuilder("libros");
+
+		if (isset($criterios['busqueda'])) {
+			$query
+				->where("libros.titulo like :tituloLibro")
+				->setParameter("tituloLibro", "%{$criterios['busqueda']}%");
+		}
+
+		if (isset($criterios['categoria']) && !$criterios['categoria']->isEmpty()) {
+			$query
+				->innerJoin('libros.categoria', 'c')
+				->andWhere($query->expr()->in('c', ':categoria'))
+				->setParameter('categoria', $criterios['categoria']);
+
+		}
+
+		return $query->getQuery()->getResult();
+	}
+
+	public function buscarApi($criterios) {
+
+		$em = $this->getEntityManager();
+		$query = $this->createQueryBuilder("libros");
+
+		if (isset($criterios)) {
+			$query
+				->where("libros.titulo like :tituloLibro")
+				->setParameter("tituloLibro", "%{$criterios}%");
+		}
+
+		return $query->getQuery()->getResult();
 	}
 }

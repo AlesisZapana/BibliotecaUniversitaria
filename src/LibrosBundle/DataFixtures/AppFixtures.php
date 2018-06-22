@@ -12,6 +12,7 @@ use LibrosBundle\Entity\Idioma;
  */
 class AppFixtures extends Fixture implements ORMFixtureInterface {
 
+	//idiomas
 	function load(ObjectManager $manager) {
 		$idioma = new Idioma();
 		$idioma->setNombre('Ingles');

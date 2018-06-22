@@ -1,43 +1,42 @@
 {% extends 'base.html.twig' %}
-
+{% block after_css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
 {% block body %}
-    <br><br><br><br><br>
-    <div class="row justify-content-md-center">
-	    <input class="form-control form-control-lg col-md-8" type="text" id="tituloLibro" placeholder="Ingrese título del libro">
-	    <button type="submit" id="buscar" class="btn btn-secondary">Buscar</button>
-    </div>
+    <br><br><br><br><br><br><br><br><br>
 
 
-{# como hacer que el form funcione, 
-    1: poner en marcha la entidad busqueda y usar {{form_start}} desde el controller #}
+{# {% trans %}
+    Hola, %name% como estas?
+{% endtrans %}
+{% set message = 'Hola, %name% como estas?' %}
 
-{# <form name="buscar" id="buscarr" action="{{path('libros_busqueda_json',{'libro':libro})}} ">
-    <div class="form-group">
-        <input class="form-control form-control-lg col-md-8" type="text" id="titulo" name="libro" placeholder="Ingrese título del libro">
-    </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form> #}
-
-{# 
-{{ form_start(form) }}
-    {{ form_errors(form) }}
-
-{{ form_end(form) }} #}
-
+{{ message|trans}} #}
+<div class="container">
+    {{form_start(form)}}
+    {{form_errors(form) }}
+    {{form_widget(form)}}
+    {{form_end(form)}} 
+</div>
 
     {% block cards %}
     {% endblock %}
 
-    {# como hacer que la url funcione mejor #}
     {% block javascripts %}    	
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script type="text/javascript">
-        $('#buscar').on('click',function(){
-            console.log("buscando");
-            url="/buscar/".concat(document.getElementById("tituloLibro").value);
-            console.log(url);
-            window.location.replace(url);
-        });
+            $(".tags").select2({
+              tags: true
+            });        
         </script>
+        <!--<script type="text/javascript">
+            $('#buscar').on('click',function(){
+                console.log("buscando");
+                url="/buscar/".concat(document.getElementById("tituloLibro").value);
+                console.log(url);
+                window.location.replace(url);
+            });
+        </script> -->       
     {% endblock %}
 
 {% endblock %}

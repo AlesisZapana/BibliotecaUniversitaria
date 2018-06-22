@@ -21,8 +21,8 @@ class CategoriaFixtures extends Fixture implements ORMFixtureInterface {
 
 		$categoria2 = new Categoria();
 		$categoria2->setNombre('Suspenso');
-
 		$manager->persist($categoria2);
+
 		$this->addReference("CATEGORIA_SUSPENSO", $categoria2);
 
 		$manager->flush();

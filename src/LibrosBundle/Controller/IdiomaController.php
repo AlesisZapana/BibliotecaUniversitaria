@@ -123,20 +123,28 @@ class IdiomaController extends Controller {
 		$form = $this->createDeleteForm($idioma);
 		$form->handleRequest($request);
 
-		if ($form->isSubmitted() && $form->isValid()) {
-			$em = $this->getDoctrine()->getManager();
-			$em->remove($idioma);
-			$em->flush();
+		try {
 
+			if ($form->isSubmitted() && $form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$em->remove($idioma);
+				$em->flush();
+
+				$this->addFlash(
+					'danger',
+					'Idioma eliminado'
+				);
+
+				return $this->redirectToRoute('idioma_index');
+			}
+
+		} catch (\Exception $e) {
 			$this->addFlash(
 				'danger',
-				'Idioma eliminado'
+				'No se puede eliminar idioma'
 			);
-
 			return $this->redirectToRoute('idioma_index');
 		}
-
-		return $this->redirectToRoute('idioma_index');
 	}
 
 	/**

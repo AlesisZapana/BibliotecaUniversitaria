@@ -3,6 +3,7 @@
 namespace LibrosBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 //use Symfony\Component\HttpFoundation\Response;
 
@@ -15,10 +16,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ApiController extends Controller {
 
-	public function busquedaAction($libro) {
+//criterios
+	//(Request $request)
+	public function busquedaAction(Request $request) {
+
+		$criterios = $request->query->get('busqueda');
 
 		$em = $this->getDoctrine()->getManager();
-		$libros = $em->getRepository('LibrosBundle:Libro')->buscar($libro);
+		$libros = $em->getRepository('LibrosBundle:Libro')->buscarApi($criterios);
 
 		$data = $this->get('jms_serializer')->serialize($libros, 'json');
 
@@ -35,7 +40,8 @@ class ApiController extends Controller {
 
 	public function fichaAction($libro) {
 		$em = $this->getDoctrine()->getManager();
-		$unLibro = $em->getRepository('LibrosBundle:Libro')->findById($libro);
+		//cambiar a findOneById, revisar las apps moviles
+		$unLibro = $em->getRepository('LibrosBundle:Libro')->findOneById($libro);
 		$data = $this->get('jms_serializer')->serialize($unLibro, 'json');
 		$response = new JsonResponse(json_decode($data));
 		$response->headers->remove('Connection', 'close');

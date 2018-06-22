@@ -1,0 +1,34 @@
+{% extends '@Libros/crud/show.html.twig' %}
+{% block imagen %}
+	<img src="{{elemento.portada}}">    
+{% endblock %}
+{% block autores %}
+	<li class="list-group-item">
+	{% if elemento.autor|length > 1 %}
+		<b>Autores:</b>
+		{% for autor in elemento.autor %}
+		    <p><a href="{{path('autor_show', { 'id': autor.id })}}">{{autor}}</a></p>
+		{% endfor %}
+	{% else %}
+		<b>Autor:</b>
+		{% for autor in elemento.autor %}
+		    <p><a href="{{path('autor_show', { 'id': autor.id })}}">{{autor}}</a></p>
+		{% endfor %}
+	{% endif %}
+	</li>
+{% endblock %}
+{% block categorias %}
+	<li class="list-group-item">
+	{% if elemento.categoria|length > 1 %}
+		<b>Categorias:</b>
+		{% for categoria in elemento.categoria %}
+		    <p>{{categoria}}</p>
+		{% endfor %}
+	{% else %}
+		<b>Categoria:</b>
+		{% for categoria in elemento.categoria %}
+		    {{categoria}}
+		{% endfor %}
+	{% endif %}
+	</li>
+{% endblock %}

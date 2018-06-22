@@ -80,7 +80,7 @@ class LibroController extends Controller {
 		$atributos = ['Titulo', 'ISBN', 'cantPaginas', 'Idioma', 'anioPublicacion', 'Portada', 'NumEdicion', 'AnioEdicion', 'Editorial', 'Resumen', 'Descripcion'];
 		$deleteForm = $this->createDeleteForm($libro);
 
-		return $this->render('@Libros/crud/show.html.twig', array(
+		return $this->render('@Libros/crud/libro.html.twig', array(
 			'elemento' => $libro,
 			'delete_form' => $deleteForm->createView(),
 			'listaNombre' => 'Libros',
