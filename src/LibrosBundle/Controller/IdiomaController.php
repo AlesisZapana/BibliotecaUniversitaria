@@ -21,7 +21,7 @@ class IdiomaController extends Controller {
 
 		$idiomas = $em->getRepository('LibrosBundle:Idioma')->findAll();
 
-		return $this->render('@Libros/crud/index.html.twig', array(
+		return $this->render('@Libros/crud/indexaux.html.twig', array(
 			'elementos' => $idiomas,
 			'columnas' => $columnas,
 			'listaNombre' => 'Idiomas',

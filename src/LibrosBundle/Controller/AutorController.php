@@ -71,7 +71,7 @@ class AutorController extends Controller {
 	 *
 	 */
 	public function showAction(Autor $autor) {
-		$columnas = ['Nombre', 'Apellido', 'Biografia', 'Web', 'Foto'];
+		$columnas = ['Nombre', 'Apellido', 'Biografia'];
 		$deleteForm = $this->createDeleteForm($autor);
 
 		return $this->render('@Libros/crud/autor.html.twig', array(

@@ -76,8 +76,8 @@ class LibroController extends Controller {
 	 */
 	public function showAction(Libro $libro) {
 
-		$columnas = ['Titulo', 'ISBN', 'Cantidad Páginas', 'Idioma', 'Año Publicación', 'Portada', 'Num. Edición', 'Año Edición', 'Editorial', 'Resumen', 'Descripcion'];
-		$atributos = ['Titulo', 'ISBN', 'cantPaginas', 'Idioma', 'anioPublicacion', 'Portada', 'NumEdicion', 'AnioEdicion', 'Editorial', 'Resumen', 'Descripcion'];
+		$columnas = ['Titulo', 'ISBN', 'Cantidad Páginas', 'Idioma', 'Año Publicación', 'Num. Edición', 'Año Edición', 'Editorial'];
+		$atributos = ['Titulo', 'ISBN', 'cantPaginas', 'Idioma', 'anioPublicacion', 'NumEdicion', 'AnioEdicion', 'Editorial'];
 		$deleteForm = $this->createDeleteForm($libro);
 
 		return $this->render('@Libros/crud/libro.html.twig', array(

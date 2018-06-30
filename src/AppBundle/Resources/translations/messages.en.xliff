@@ -3,8 +3,8 @@
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="symfony_is_great">
-                <source>Hola, %name% como estas?</source>
-                <target>Hello, %name% how are you?</target>
+                <source>Busqueda</source>
+                <target>Search</target>
             </trans-unit>
         </body>
     </file>

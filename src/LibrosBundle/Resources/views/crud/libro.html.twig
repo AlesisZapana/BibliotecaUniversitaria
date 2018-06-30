@@ -1,6 +1,11 @@
 {% extends '@Libros/crud/show.html.twig' %}
+{% block titulo %}
+    {{elemento.titulo}}
+{% endblock %}
 {% block imagen %}
-	<img src="{{elemento.portada}}">    
+	<div class="col-md-4">
+	<img src="{{elemento.portada}}">
+	</div>    
 {% endblock %}
 {% block autores %}
 	<li class="list-group-item">
@@ -31,4 +36,10 @@
 		{% endfor %}
 	{% endif %}
 	</li>
+{% endblock %}
+{% block resumen %}
+	<ul class="list-group list-group-flush">
+	    <li class="list-group-item"><b>Resumen</b>: {{elemento.resumen}} </li>
+	    <li class="list-group-item"><b>Descripcion</b>: {{elemento.descripcion}} </li>
+	</ul>
 {% endblock %}

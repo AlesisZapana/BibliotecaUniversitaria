@@ -23,6 +23,7 @@ class ApiController extends Controller {
 		$criterios = $request->query->get('busqueda');
 
 		$em = $this->getDoctrine()->getManager();
+
 		$libros = $em->getRepository('LibrosBundle:Libro')->buscarApi($criterios);
 
 		$data = $this->get('jms_serializer')->serialize($libros, 'json');

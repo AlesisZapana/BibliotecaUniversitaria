@@ -1,6 +1,12 @@
 {% extends '@Libros/crud/show.html.twig' %}
+{% block titulo %}
+    {{elemento}}
+{% endblock %}
 {% block imagen %}
 	<center>
     <img src="{{elemento.foto}}" style="min-width: 18rem; max-width: 18rem;">
     </center>  
+{% endblock %}
+{% block info %}
+    <li class="list-group-item"><b>Web</b>: <a href="{{elemento.web}}">Web del autor</a> </li>
 {% endblock %}

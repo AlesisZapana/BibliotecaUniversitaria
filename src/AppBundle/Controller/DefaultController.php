@@ -11,21 +11,23 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\setMethod;
 use Symfony\Component\HttpFoundation\Request;
 
+//use Symfony\Component\Translation\TranslatorInterface;
+
 class DefaultController extends Controller {
 	/**
 	 * @Route("/", name="homepage")
 	 */
 	public function indexAction(Request $request) {
 
-		//$request->setLocale('en_US');
+		$request->setLocale('en');
 
-		var_dump(print_r($request->getLocale()));
+		//var_dump(print_r($request->getLocale()));
 
 		$name = 'Ale';
-		// $translated = $this->get('translator')->trans('Hola, %name% como estas?',
-		// 	['%name%' => $name]);
+		$translated = $this->get('translator')->trans('Hola, %name% como estas?',
+			['%name%' => $name]);
 
-		// return new Response($translated);
+		//return new Response($translated);
 
 		$form = $this->createFormBuilder()
 			->setMethod('GET')

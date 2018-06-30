@@ -21,7 +21,7 @@ class CategoriaController extends Controller {
 
 		$categorias = $em->getRepository('LibrosBundle:Categoria')->findAll();
 
-		return $this->render('@Libros/crud/index.html.twig', array(
+		return $this->render('@Libros/crud/indexaux.html.twig', array(
 			'elementos' => $categorias,
 			'columnas' => $columnas,
 			'atributos' => $columnas,

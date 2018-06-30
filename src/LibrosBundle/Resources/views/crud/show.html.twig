@@ -25,33 +25,40 @@
       </div> #}
       <div class="card-body">
         {# Titulo de la entidad #}
-        <h5 class="card-title">{{entidadNombre}}</h5>
+        <h3 class="card-title">{% block titulo %}{{entidadNombre}}{% endblock %}</h3>
        {#  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> #}
-
-            {# imagen del libro #}
-            {% block imagen %}
-            {% endblock %}
-            <ul class="list-group list-group-flush">
-            {% block autores %}{% endblock %}
-            {% block categorias %}{% endblock %}
-            {% for atributo in atributos %}
-                {% set campo = attribute(elemento,atributo) %}
-                    <li class="list-group-item"><b> {{columnas[loop.index0]}}</b>: 
-                    {% if campo.timestamp is defined %}
-                        {{campo|date("d/M/Y")}} </li>
-                    {% else %}
-                        {{campo}}</li>
-                    {% endif %} 
-            {% endfor %}
-            </ul>
-
-        {% if app.user %}
-        <a href="{{path(rutaEdit, { 'id': elemento.id })}}" class="btn btn-secondary">Editar</a>
-        <a href="{{path(rutaIndex)}}" class="btn btn-primary">Listado de {{listaNombre}}</a>
-        {{ form_start(delete_form) }}
-            <button type="submit" class="btn btn-danger" value="Delete">Delete</button>
-        {{ form_end(delete_form) }}        
-        {% endif %}
+       <div class="row">
+                {# imagen del libro #}
+                {% block imagen %}
+                {% endblock %}
+                <div class="col-md">
+                    <ul class="list-group list-group-flush">
+                    {% block autores %}{% endblock %}
+                    {% block categorias %}{% endblock %}
+                    {% for atributo in atributos %}
+                        {% set campo = attribute(elemento,atributo) %}
+                            <li class="list-group-item"><b> {{columnas[loop.index0]}}</b>: 
+                            {% if campo.timestamp is defined %}
+                                {{campo|date("d/M/Y")}} </li>
+                            {% else %}
+                                {{campo}}</li>
+                            {% endif %} 
+                    {% endfor %}
+                    </ul>
+                    {% block info %}
+                        
+                    {% endblock %}
+                </div>
+                {% block resumen %}
+                {% endblock %}
+            {% if app.user %}
+            <a href="{{path(rutaEdit, { 'id': elemento.id })}}" class="btn btn-secondary">Editar</a>
+            <a href="{{path(rutaIndex)}}" class="btn btn-primary">Listado de {{listaNombre}}</a>
+            {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger" value="Delete">Delete</button>
+            {{ form_end(delete_form) }}        
+            {% endif %}
+        </div>
       </div>
     </div>    
 
