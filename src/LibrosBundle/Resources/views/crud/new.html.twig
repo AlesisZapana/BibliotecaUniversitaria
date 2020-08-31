@@ -8,13 +8,12 @@
     <div class="container">
         {{ form_start(form) }}
             {{ form_widget(form) }}
-            <input type="submit" value="Create" />
+            <input class="btn btn-primary" type="submit" value="Agregar" />
         {{ form_end(form) }}
     </div>
+    <br>
     <ul>
-        <li>
-            <a href="{{ path(rutaIndex) }}">Listado de {{listaEntidad}} </a>
-        </li>
+        <a class="btn btn-primary" href="{{ path(rutaIndex) }}">Listado de {{listaEntidad}} </a>
     </ul>
     
 {% endblock %}

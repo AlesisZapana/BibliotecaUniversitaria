@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>Lista de {{listaNombre}} </h1>
-    <a href="{{ path(rutaNew) }}" class="badge badge-primary">Crear {{entidadNombre}} </a>
+    {% if app.user %}
+    <a href="{{ path(rutaNew) }}" class="badge badge-primary">Crear {{entidadNombre}} </a>        
+    {% endif %}
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -28,14 +30,11 @@
                     <ul>
                         
                             {% block mostrar %}
-                                <li>
                                 <a href="{{path(rutaShow,{'id': elemento.id }) }}" class="badge badge-primary">Mostrar</a>
-                                </li>
                             {% endblock %}
-                        
-                        <li>
+                            {% if app.user %}                        
                             <a href="{{ path(rutaEdit, { 'id': elemento.id }) }}" class="badge badge-secondary">Editar</a>
-                        </li>
+                            {% endif %}
                     </ul>
                 </td>
             </tr>

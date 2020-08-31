@@ -5,10 +5,10 @@ namespace LibrosBundle\Controller;
 use LibrosBundle\Entity\Categoria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * Categorium controller.
- *
+ *@IsGranted("ROLE_USER")
  */
 class CategoriaController extends Controller {
 	/**

@@ -5,6 +5,7 @@ namespace LibrosBundle\Controller;
 use LibrosBundle\Entity\Autor;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Autor controller.
@@ -12,8 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AutorController extends Controller {
 	/**
-	 * Lists all autor entities.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function indexAction() {
 		$columnas = ['Nombre', 'Apellido', 'Web'];
@@ -34,8 +34,7 @@ class AutorController extends Controller {
 	}
 
 	/**
-	 * Creates a new autor entity.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function newAction(Request $request) {
 		$autor = new Autor();
@@ -52,7 +51,7 @@ class AutorController extends Controller {
 				'Autor creado'
 			);
 
-			return $this->redirectToRoute('categoria_index');
+			return $this->redirectToRoute('autor_index');
 
 			//return $this->redirectToRoute('autor_show', array('id' => $autor->getId()));
 		}
@@ -87,8 +86,7 @@ class AutorController extends Controller {
 	}
 
 	/**
-	 * Displays a form to edit an existing autor entity.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function editAction(Request $request, Autor $autor) {
 		$deleteForm = $this->createDeleteForm($autor);
@@ -112,8 +110,7 @@ class AutorController extends Controller {
 	}
 
 	/**
-	 * Deletes a autor entity.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function deleteAction(Request $request, Autor $autor) {
 		$form = $this->createDeleteForm($autor);
@@ -126,7 +123,7 @@ class AutorController extends Controller {
 
 			$this->addFlash(
 				'danger',
-				'Libro eliminado'
+				'Autor eliminado'
 			);
 		}
 

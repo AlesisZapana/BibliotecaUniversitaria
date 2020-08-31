@@ -17,24 +17,28 @@
 	{{librosJson}} #}
 	<div class="container">
 	<div class="justify-content-md-center card-deck">
+		<div class="container">
+		<div class="row justify-content-center">
 		{% for libro in libros %}	
-		<div class="card card-cascade border-secondary mb-3" style="min-width: 18rem; max-width: 18rem;">
-		  <img class="card-img-top" src="{{libro.portada}}" alt="{{libro.titulo}}">
-		  <div class="card-body">
-		    <h5 class="card-title">{{libro.titulo}}</h5>
-		    {# <p class="card-text" style="max-height: 10rem;">{{libro.resumen}} </p> #}
-		    {% block imagen %}
-		    {% endblock %}
-			<ul class="list-group list-group-flush">
-			    <li class="list-group-item">Idioma: {{libro.idioma.nombre}}</li>
-			    <li class="list-group-item">Cant. Páginas: {{libro.cantpaginas}}</li>
-			</ul>	    
-			<div class="card-footer">
-		    	<small><a href="{{path('libro_show',{'id': libro.id })}} " class="btn btn-primary">Más Info</a></small>
-		    </div>
-		  </div>
-		</div>	
+			<div class="card card-cascade border-secondary col-lg-3 col-md-6 col-sm-12" style="min-width: 17rem; max-width: 17rem;">
+			<img class="card-img-top" src="{{libro.portada}}" alt="{{libro.titulo}}">
+			<div class="card-body">
+				<h5 class="card-title">{{libro.titulo}}</h5>
+				{# <p class="card-text" style="max-height: 10rem;">{{libro.resumen}} </p> #}
+				{% block imagen %}
+				{% endblock %}
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">{% trans %}Idioma{% endtrans %}: {{libro.idioma.nombre}}</li>
+					<li class="list-group-item">{% trans %}Cant. Páginas{% endtrans %}: {{libro.cantpaginas}}</li>
+				</ul>
+				<div class="card-footer">
+					<small><a href="{{path('libro_show',{'id': libro.id })}} " class="btn btn-primary">{% trans %}Más Info{% endtrans %}</a></small>
+				</div>
+			</div>
+			</div>	
 		{% endfor %}
+		</div>
+		</div>
 	</div>
 	</div>
 {% endblock %}

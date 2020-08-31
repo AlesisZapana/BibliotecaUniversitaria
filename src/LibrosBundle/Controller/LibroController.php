@@ -5,7 +5,7 @@ namespace LibrosBundle\Controller;
 use LibrosBundle\Entity\Libro;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * Libro controller.
  *
@@ -36,8 +36,7 @@ class LibroController extends Controller {
 	}
 
 	/**
-	 * Creates a new libro entity.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function newAction(Request $request) {
 
@@ -93,8 +92,7 @@ class LibroController extends Controller {
 	}
 
 	/**
-	 * Displays a form to edit an existing libro entity.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function editAction(Request $request, Libro $libro) {
 		$deleteForm = $this->createDeleteForm($libro);
@@ -104,7 +102,7 @@ class LibroController extends Controller {
 		if ($editForm->isSubmitted() && $editForm->isValid()) {
 			$this->getDoctrine()->getManager()->flush();
 
-			return $this->redirectToRoute('libro_edit', array('id' => $libro->getId()));
+			return $this->redirectToRoute('libro_show', array('id' => $libro->getId()));
 		}
 
 		return $this->render('@Libros/crud/edit.html.twig', array(
@@ -118,8 +116,7 @@ class LibroController extends Controller {
 	}
 
 	/**
-	 * Deletes a libro entity.
-	 *
+	 *@IsGranted("ROLE_USER")
 	 */
 	public function deleteAction(Request $request, Libro $libro) {
 		$form = $this->createDeleteForm($libro);

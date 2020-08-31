@@ -51,24 +51,15 @@
                 </div>
                 {% block resumen %}
                 {% endblock %}
-            {% if app.user %}
-            <a href="{{path(rutaEdit, { 'id': elemento.id })}}" class="btn btn-secondary">Editar</a>
-            <a href="{{path(rutaIndex)}}" class="btn btn-primary">Listado de {{listaNombre}}</a>
-            {{ form_start(delete_form) }}
-                <button type="submit" class="btn btn-danger" value="Delete">Delete</button>
-            {{ form_end(delete_form) }}        
-            {% endif %}
+            </div>
         </div>
-      </div>
     </div>    
-
-    {# <div class="card mb-3">
-  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div> #}
+    {% if app.user %}
+    <a href="{{path(rutaEdit, { 'id': elemento.id })}}" class="btn btn-secondary">Editar</a>
+    <a href="{{path(rutaIndex)}}" class="btn btn-primary">Listado de {{listaNombre}}</a>
+    {{ form_start(delete_form) }}
+        <button type="submit" class="btn btn-danger" value="Delete">Eliminar</button>
+    {{ form_end(delete_form) }}        
+    {% endif %}
 
 {% endblock %}

@@ -32,16 +32,28 @@ class LibroType extends AbstractType {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
 
 		//fecha de carga=now
-		$builder->add('titulo')->add('isbn')->add('cantpaginas', IntegerType::class, ['attr' => [
+		$builder->add('titulo')->add('isbn')->add('cantpaginas', IntegerType::class, [
+			'label'=>'Cantidad paginas',
+			'attr' => [
 			'min' => 1,
 		]])
-			->add('portada')->add('numEdicion', IntegerType::class, ['attr' => [
-			'min' => 1,
-		]])->add('anioEdicion', IntegerType::class, ['attr' => [
-			'min' => 1,
-		]])->add('editorial')->add('anioPublicacion', IntegerType::class, ['attr' => [
-			'min' => 1,
-		]])->add('descripcion')->add('resumen', TextareaType::class)->add('idioma', EntityType::class, [
+			->add('portada')->add('numEdicion', IntegerType::class, [
+			'label'=>'Núm. Edición',
+			'attr' => [
+				'min' => 1,
+		]])->add('anioEdicion', IntegerType::class, [
+			'label'=>'Año Edición',
+			'attr' => [
+				'min' => 1,
+		]])->add('editorial')->add('anioPublicacion', IntegerType::class, [
+			'label'=>'Año publicación',
+			'attr' => [
+				'min' => 1,
+		]])->add('descripcion')->add('resumen', TextareaType::class,[
+			'attr'=>[
+				'maxlength'=>'255'
+			]
+		])->add('idioma', EntityType::class, [
 			'class' => Idioma::class,
 		])->add('fechaCarga', DateType::class, [
 			'data' => new \DateTime('now'),
@@ -69,18 +81,6 @@ class LibroType extends AbstractType {
 				'attr' => ['class' => 'tags'],
 			])
 		;
-		//generar un formulario autor dentro del form libro
-		// ->add('Nuevo Autor', ButtonType::class, [
-		// 	'attr' => ['class' => 'save btn-secondary',
-		// 		'type' => 'button',
-		// 		'data-toggle' => 'collapse',
-		// 		'data-target' => '#librosbundle_libro_autor',
-		// 		'aria-expanded' => 'false',
-		// 		'aria-controls' => 'librosbundle_libro_autor'],
-		// ])->add('autor', AutorType::class, [
-		// 	'attr' => ['class' => 'collapse',
-		// 	],
-		// ]);
 	}
 
 	/**

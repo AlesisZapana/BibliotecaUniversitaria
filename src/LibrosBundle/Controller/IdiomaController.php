@@ -5,10 +5,9 @@ namespace LibrosBundle\Controller;
 use LibrosBundle\Entity\Idioma;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
- * Idioma controller.
- *
+ *@IsGranted("ROLE_USER")
  */
 class IdiomaController extends Controller {
 	/**
@@ -102,7 +101,7 @@ class IdiomaController extends Controller {
 		if ($editForm->isSubmitted() && $editForm->isValid()) {
 			$this->getDoctrine()->getManager()->flush();
 
-			return $this->redirectToRoute('idioma_edit', array('id' => $idioma->getId()));
+			return $this->redirectToRoute('idioma_index');
 		}
 
 		return $this->render('@Libros/crud/edit.html.twig', array(

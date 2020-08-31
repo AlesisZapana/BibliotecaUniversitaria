@@ -32,24 +32,25 @@ class LibroFixtures extends Fixture implements ORMFixtureInterface {
 		$libro->addCategorium($this->getReference("CATEGORIA_SUSPENSO"));
 		$libro->addAutor($this->getReference("AUTOR_MARQUEZ"));
 		$manager->persist($libro);
-		$manager->flush();
+		//$manager->flush();
 
-		$libro->setTitulo('Cien años de soledad');
-		$libro->setIsbn(12345);
-		$libro->setCantpaginas(471);
-		$libro->setPortada('https://images-na.ssl-images-amazon.com/images/I/51egIZUl88L._SX336_BO1,204,203,200_.jpg');
-		$libro->setNumEdicion(2);
-		$libro->setEditorial('Debolsillo');
-		$libro->setDescripcion('José Arcadio Buendía y Úrsula Iguarán son un matrimonio de primos que se casaron llenos de presagios y temores por su parentesco y el mito existente en la región de que su descendencia podía tener cola de cerdo. En una pelea de gallos en la que resultó muerto el animal de Prudencio Aguilar, éste, enardecido por la derrota, le gritó a José Arcadio Buendía, dueño del vencedor: «A ver si ese gallo le hace el favor a tu mujer», ya que la gente del pueblo sospechaba que José Arcadio y Úrsula no habían tenido relaciones en un año de matrimonio (por el miedo de Úrsula de que la descendencia naciera con cola de cerdo). Así fue como José Arcadio Buendía reta en duelo a Prudencio, en el que José Arcadio lo mata al atravesarle la garganta con una lanza. Sin embargo, su fantasma lo atormenta apareciéndose repetidas veces en su casa lavándose la herida mortal con un tapón de esparto. Así es como José Arcadio Buendía y Úrsula Iguarán deciden irse a la sierra. En medio del camino José Arcadio Buendía tiene un sueño en que se le aparecen construcciones con paredes de espejo y, preguntando su nombre, le responden "Macondo". Así, despierto del sueño, decide detener la caravana, hacer un claro en la selva y habitar ahí');
-		$libro->setAnioEdicion(2000);
-		$libro->setFechaCarga(new DateTime('now'));
-		$libro->setResumen('El libro se compone de 20 capítulos no titulados, en los cuales se narra una historia con una estructura cíclica temporal.');
-		$libro->setIdioma($this->getReference("IDIOMA_ESPANOL"));
-		$libro->setAnioPublicacion(1967);
-		$libro->addCategorium($this->getReference("CATEGORIA_SUSPENSO"));
-		$libro->addAutor($this->getReference("AUTOR_MARQUEZ"));
+		$libro1=new Libro();
+		$libro1->setTitulo('Cien años de soledad');
+		$libro1->setIsbn(12345);
+		$libro1->setCantpaginas(471);
+		$libro1->setPortada('https://images-na.ssl-images-amazon.com/images/I/51egIZUl88L._SX336_BO1,204,203,200_.jpg');
+		$libro1->setNumEdicion(2);
+		$libro1->setEditorial('Debolsillo');
+		$libro1->setDescripcion('José Arcadio Buendía y Úrsula Iguarán son un matrimonio de primos que se casaron llenos de presagios y temores por su parentesco y el mito existente en la región de que su descendencia podía tener cola de cerdo. En una pelea de gallos en la que resultó muerto el animal de Prudencio Aguilar, éste, enardecido por la derrota, le gritó a José Arcadio Buendía, dueño del vencedor: «A ver si ese gallo le hace el favor a tu mujer», ya que la gente del pueblo sospechaba que José Arcadio y Úrsula no habían tenido relaciones en un año de matrimonio (por el miedo de Úrsula de que la descendencia naciera con cola de cerdo). Así fue como José Arcadio Buendía reta en duelo a Prudencio, en el que José Arcadio lo mata al atravesarle la garganta con una lanza. Sin embargo, su fantasma lo atormenta apareciéndose repetidas veces en su casa lavándose la herida mortal con un tapón de esparto. Así es como José Arcadio Buendía y Úrsula Iguarán deciden irse a la sierra. En medio del camino José Arcadio Buendía tiene un sueño en que se le aparecen construcciones con paredes de espejo y, preguntando su nombre, le responden "Macondo". Así, despierto del sueño, decide detener la caravana, hacer un claro en la selva y habitar ahí');
+		$libro1->setAnioEdicion(2000);
+		$libro1->setFechaCarga(new DateTime('now'));
+		$libro1->setResumen('El libro se compone de 20 capítulos no titulados, en los cuales se narra una historia con una estructura cíclica temporal.');
+		$libro1->setIdioma($this->getReference("IDIOMA_ESPANOL"));
+		$libro1->setAnioPublicacion(1967);
+		$libro1->addCategorium($this->getReference("CATEGORIA_SUSPENSO"));
+		$libro1->addAutor($this->getReference("AUTOR_MARQUEZ"));
 
-		$manager->persist($libro);
+		$manager->persist($libro1);
 		$manager->flush();
 	}
 }
